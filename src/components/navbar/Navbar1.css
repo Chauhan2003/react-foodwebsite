@@ -1,0 +1,112 @@
+.nav1__container {
+    width: 100%;
+    height: 30px;
+    padding-inline: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: var(--font-family4);
+}
+
+.nav1__links {
+    list-style: none;
+    display: flex;
+}
+
+.nav1__link {
+    /* font-weight: bold; */
+    padding-right: 2rem;
+    color: var(--main-heading-color);
+}
+
+.toggle__add,
+.toggle__close{
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+}
+
+#add-icon,
+#close-icon{
+    font-size: 2rem;
+    display: none;
+}
+
+@media screen and (max-width: 787px){
+    .nav1__container{
+        padding-inline: 10px;
+        height: 20px;
+    }
+
+    .nav1__link{
+        font-size: .8rem;
+        font-weight: bold;
+        padding-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #add-icon{
+        display: block;
+    }
+    
+      .nav1__links {
+        display: none;
+        /* Add styles for the hidden links as needed */
+      }
+    
+      /* Adjust styles for the container */
+      .nav1__container {
+        padding-inline: 10px;
+        height: auto; /* Allow the container to expand as needed */
+      }
+    
+      /* Style for the links when the menu is hidden */
+      .nav1__link {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: block;
+      }
+
+  /* Adjust the container styles */
+  .nav1__container.menu-open {
+    height: auto;
+  }
+
+  /* Style for the links when the menu is open on small screens */
+  .nav1__container.menu-open .nav1__link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-right: 1rem;
+    display: block;
+  }
+
+  /* Show the navigation links when the button is clicked */
+  .menu-open .nav1__links {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    /* background-color: gray; */
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  /* Show the close icon and hide the add icon when the menu is open */
+  .menu-open #add-icon {
+    display: none;
+  }
+
+  .menu-open #close-icon {
+    display: block;
+  }
+    
+}
+
+
+

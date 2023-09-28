@@ -1,0 +1,7 @@
+.hero__container {
+    background-image: url('../../assets/bg.png');
+    width: 100%;
+    min-height: 100vh; /* Use min-height to ensure it covers the viewport height */
+    background-size: cover;
+    background-position: center center; /* Center the background image */
+}
