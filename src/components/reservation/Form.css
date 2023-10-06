@@ -15,7 +15,7 @@
 }
 
 .reservation__content > h1{
-    font-family: var(--font-family4);
+    font-family: var(--font-family1);
     font-size: 2.5rem;
     text-transform: uppercase;
 }

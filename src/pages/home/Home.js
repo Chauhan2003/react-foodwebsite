@@ -6,6 +6,7 @@ import Form from '../../components/reservation/Form'
 import Order from '../../components/foodorder/Order'
 import Footer from '../../components/footer/Footer'
 import Discover from '../../components/discover/Discover'
+import Image from '../../components/dividingimage/Image'
 
 function Home() {
   return (
@@ -13,6 +14,9 @@ function Home() {
       <div className='section__1'>
         <Navbar />
         <Main />
+      </div>
+      <div className='dividing__img'>
+        <Image />
       </div>
       <div className='section__2'>
         <Order />

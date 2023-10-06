@@ -8,8 +8,8 @@
 }
 
 .discoverSection__content > h3{
-    font-family: var(--font-family4);
-    font-size: 3rem;
+    font-family: var(--font-family1);
+    font-size: 4rem;
     text-transform: uppercase;
 }
 
@@ -22,7 +22,7 @@
 .discoverSection__content > p{
     font-size: 1rem;
     font-family: var(--font-family3);
-    padding: 1rem 5rem;
+    padding: 1rem 8rem;
     margin-bottom: 1.5rem;
 }
 
