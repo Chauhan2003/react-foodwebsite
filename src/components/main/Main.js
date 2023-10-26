@@ -1,7 +1,13 @@
 import React from 'react'
 import './Main.css'
+import { useNavigate } from 'react-router-dom';
 
 function Main() {
+    const navigate = useNavigate();
+
+    const functionMy = () => {
+        navigate('/login');
+    }
     return (
         <div className="hero__container">
             <div className="hero__leftcontent">
@@ -24,7 +30,7 @@ function Main() {
                         1+1=3
                     </div>
                 </div>
-                <button className="hero__container-btn">
+                <button className="hero__container-btn" onClick={functionMy}>
                     order now
                 </button>
             </div>
