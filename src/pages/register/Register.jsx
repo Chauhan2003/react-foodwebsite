@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import './Register.css'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
-    const [username, setUsername] = useState('');
+    const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [address, setaddress] = useState('');
     const [registrationStatus, setRegistrationStatus] = useState('');
 
     const navigate = useNavigate();
 
-    const handleRegister = () => {
-        console.log('Username:', username);
-        console.log('Password:', password);
-        console.log('Confirm Password:', confirmPassword);
+    const handleRegister = async() => {
+        try{
+            console.log('email:', email);
+            console.log('Password:', password);
+            console.log('address:', address);
 
-        if (password === confirmPassword) {
-            setRegistrationStatus('Registration successful!');
+            const response = await axios.post('http://localhost:8080/auth/register', {
+                email,
+                password,
+                address,
+            });
 
+            setRegistrationStatus('you are registered');
             navigate('/login');
-        } else {
-            setRegistrationStatus('Passwords do not match');
+        } catch(error){
+            console.error('Error during registration: ', error.response ? error.response.data : error.message);
+            setRegistrationStatus('Error during registration');
         }
     };
 
@@ -29,10 +36,10 @@ function Register() {
             <h2>Register</h2>
             <input
                 className="register-input"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                type="email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                placeholder="email"
             />
             <input
                 className="register-input"
@@ -43,10 +50,10 @@ function Register() {
             />
             <input
                 className="register-input"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm Password"
+                type="text"
+                value={address}
+                onChange={(e) => setaddress(e.target.value)}
+                placeholder="address"
             />
             <button className="register-button" onClick={handleRegister}>
                 Register

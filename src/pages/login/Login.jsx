@@ -1,37 +1,43 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (username === 'user' && password === 'password') {
-      setLoginStatus('Login successful!');
+  const handleLogin = async () => {
+    try {
+      console.log('email:', email);
+      console.log('Password:', password);
+
+      const response = await axios.post('http://localhost:8080/auth/login', {
+        email,
+        password,
+      });
+
+      setLoginStatus('Login Successfull');
 
       navigate('/');
-    } else {
-      setLoginStatus('Invalid User');
+    } catch (error) {
+      console.error('Error during login: ', error.response ? error.response.data : error.message);
+      setLoginStatus('Invalid credentials');
     }
   };
-
-  console.log('Username:', username);
-  console.log('Password:', password);
-  console.log('Login Status:', loginStatus);
 
   return (
     <div className="login-container">
       <h2>Login</h2>
       <input
         className="login-input"
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
+        type="email"
+        value={email}
+        onChange={(e) => setemail(e.target.value)}
+        placeholder="email"
       />
       <input
         className="login-input"
@@ -43,7 +49,9 @@ function Login() {
       <button className="login-button" onClick={handleLogin}>
         Login
       </button>
-      <p className="register-link">Don't have an account? <Link to='/register'>Register</Link></p>
+      <p className="register-link">
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
       {loginStatus && <p className="login-feedback">{loginStatus}</p>}
     </div>
   );
